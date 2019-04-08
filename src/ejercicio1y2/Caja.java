@@ -1,4 +1,4 @@
-package ejercicio1;
+package ejercicio1y2;
 public class Caja <T>{
 	T elemento;
 	public Caja(T elemento) {

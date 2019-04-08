@@ -1,4 +1,4 @@
-package ejercicio1;
+package ejercicio1y2;
 import java.util.LinkedList;
 
 public class Almacen<T> implements Contenido<T>{
