@@ -2,13 +2,16 @@ package ejercicio8;
 
 import java.time.LocalDate;
 
-public class Pelicula {
+public class Pelicula implements Comparable<Pelicula>{
 	private Clave clave;
 	private String nombre;
 	private LocalDate fechaEstreno;
 	private LocalDate fechaDVD;
+	private static int comedias=0;
+	private static int ficcion=0;
+	private static int terror=0;
 	public Pelicula(Genero genero, String nombre, LocalDate fechaEstreno, LocalDate fechaDVD) {
-		clave.setGenero(genero);
+		asignarClave(genero);
 		this.nombre = nombre;
 		this.fechaEstreno = fechaEstreno;
 		this.fechaDVD = fechaDVD;
@@ -16,29 +19,50 @@ public class Pelicula {
 	public Pelicula(Pelicula pelicula) {
 		this(pelicula.clave.genero,pelicula.nombre,pelicula.fechaEstreno,pelicula.fechaDVD);
 	}
-	public boolean equals(Object o) {
-		return o instanceof Pelicula && nombre.equals(((Pelicula)o).nombre) && ((Pelicula)o).fechaEstreno.equals(fechaEstreno) && ((Pelicula)o).fechaDVD.equals(fechaDVD);
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((clave == null) ? 0 : clave.hashCode());
+		result = prime * result + ((fechaDVD == null) ? 0 : fechaDVD.hashCode());
+		result = prime * result + ((fechaEstreno == null) ? 0 : fechaEstreno.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
 	}
-	public void asignarClave() {
-		clave.setNum(5);
+	@Override
+	public boolean equals(Object o) {
+		return o instanceof Pelicula && nombre.equals(((Pelicula)o).nombre) && ((Pelicula)o).fechaEstreno.equals(fechaEstreno) && ((Pelicula)o).fechaDVD.equals(fechaDVD) && 
+				((Pelicula)o).clave.equals(clave);
+	}
+	public void asignarClave(Genero genero) {
+		if(genero==Genero.TERROR) {
+			terror++;
+			clave=new Clave(terror,Genero.TERROR);
+		}else if(genero==Genero.COMEDIA) {
+			comedias++;
+			clave=new Clave(comedias,Genero.COMEDIA);
+		}else {
+			ficcion++;
+			clave=new Clave(ficcion,Genero.FICCION);
+		}
 	}
 	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 	public LocalDate getFechaEstreno() {
 		return fechaEstreno;
-	}
-	public void setFechaEstreno(LocalDate fechaEstreno) {
-		this.fechaEstreno = fechaEstreno;
 	}
 	public LocalDate getFechaDVD() {
 		return fechaDVD;
 	}
-	public void setFechaDVD(LocalDate fechaDVD) {
-		this.fechaDVD = fechaDVD;
+	@Override
+	public int compareTo(Pelicula o) {
+		return 0;
+	}
+	@Override
+	public String toString() {
+		return String.format("%-10s %-35s Clave: %-5s Fecha estreno: %-12s Fecha DVD: %-12s",clave.genero, nombre,clave,
+				fechaEstreno, fechaDVD);
 	}
 	
 }
