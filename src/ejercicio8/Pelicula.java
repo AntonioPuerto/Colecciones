@@ -1,6 +1,7 @@
 package ejercicio8;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Pelicula implements Comparable<Pelicula>{
 	private Clave clave;
@@ -57,7 +58,12 @@ public class Pelicula implements Comparable<Pelicula>{
 	}
 	@Override
 	public int compareTo(Pelicula o) {
-		return 0;
+		int comparacion=(int) ChronoUnit.DAYS.between(fechaDVD, o.fechaDVD);
+		if(comparacion==0) {
+			return nombre.compareToIgnoreCase(o.nombre);
+		}else {
+			return comparacion;
+		}
 	}
 	@Override
 	public String toString() {
