@@ -4,7 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.TreeSet;
+
+import ejercicio3.Keyboard.Range;
 
 public class Main {
 
@@ -18,11 +23,33 @@ public class Main {
 		Asignatura bd2=new Asignatura("Progrmación","Hernecia y Colecciones",LocalDate.of(2017, 6, 6),LocalTime.of(8, 15),LocalTime.of(13, 30));
 		Asignatura clonProg=new Asignatura(prog);
 		Asignatura clonLm=new Asignatura(lm);
-		List<Asignatura> listaArray=new ArrayList<>(List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm));
+		List<Asignatura> listaArray=new ArrayList<>();
+		List<Asignatura> sinDuplicados=new HashSet<>(List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm));
+		TreeSet<Asignatura> arbol=new TreeSet<>(List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm));
+		listaArray=List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm);
+		ListIterator<Asignatura> it=sinDuplicados.listIterator(sinDuplicados.size());
+		int pos1,pos2;
 		for(Asignatura a:listaArray) {
 			System.out.println(a);
 		}
-	
+		
+		for(Asignatura a: sinDuplicados) {
+			System.out.println(a);
+		}
+		
+		while(it.hasPrevious()) {
+			System.out.println(it.previous());
+		}
+		System.out.print("Introduce la primera posición: ");
+		pos1=ejercicio3.Keyboard.range(Range.BOTHIN, sinDuplicados.size(), 0);
+		System.out.print("Introduce la segunda posición: ");
+		pos2=ejercicio3.Keyboard.range(Range.BOTHIN, sinDuplicados.size(), 0);
+		for(Asignatura a: sinDuplicados.subList(pos1,pos2)) {
+			System.out.println(a);
+		}
+		for(Asignatura a: arbol) {
+			System.out.println(a);
+		}
 	}
 
 }

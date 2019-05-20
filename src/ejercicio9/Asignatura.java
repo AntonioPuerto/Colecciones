@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Asignatura {
+public class Asignatura implements Comparable<Asignatura>{
 	private String nombre;
 	private String descripcion;
 	private LocalDate fecha;
@@ -49,6 +49,20 @@ public class Asignatura {
 	public String toString() {
 		return String.format("%-15s %-15s %-15s %-15s %-10s",
 				nombre, descripcion, formatear(fecha), horaInicio, horaFin);
+	}
+	@Override
+	public int compareTo(Asignatura o) {
+		int comparacion;
+		if(nombre.compareTo(o.nombre)!=0) {
+			comparacion=nombre.compareTo(o.nombre);
+		}else {
+			if(fecha.compareTo(o.fecha)!=0) {
+				comparacion=fecha.compareTo(o.fecha);
+			}else {
+				comparacion=horaInicio.compareTo(o.horaInicio);
+			}
+		}
+		return comparacion;
 	}
 	
 }
