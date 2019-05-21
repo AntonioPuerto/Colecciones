@@ -24,10 +24,10 @@ public class Main {
 		Asignatura clonProg=new Asignatura(prog);
 		Asignatura clonLm=new Asignatura(lm);
 		List<Asignatura> listaArray=new ArrayList<>();
-		List<Asignatura> sinDuplicados=new HashSet<>(List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm));
-		TreeSet<Asignatura> arbol=new TreeSet<>(List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm));
-		listaArray=List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm);
-		ListIterator<Asignatura> it=sinDuplicados.listIterator(sinDuplicados.size());
+		HashSet<Asignatura> sinDuplicados=new HashSet<>();
+		TreeSet<Asignatura> arbol=new TreeSet<>();
+		//List.of(prog,bd,sis,ed,lm,fol,bd2,clonProg,clonLm)
+		ListIterator<Asignatura> it=((List<Asignatura>) sinDuplicados).listIterator(sinDuplicados.size());
 		int pos1,pos2;
 		for(Asignatura a:listaArray) {
 			System.out.println(a);
@@ -44,7 +44,7 @@ public class Main {
 		pos1=ejercicio3.Keyboard.range(Range.BOTHIN, sinDuplicados.size(), 0);
 		System.out.print("Introduce la segunda posición: ");
 		pos2=ejercicio3.Keyboard.range(Range.BOTHIN, sinDuplicados.size(), 0);
-		for(Asignatura a: sinDuplicados.subList(pos1,pos2)) {
+		for(Asignatura a: ((List<Asignatura>) sinDuplicados).subList(pos1,pos2)) {
 			System.out.println(a);
 		}
 		for(Asignatura a: arbol) {
