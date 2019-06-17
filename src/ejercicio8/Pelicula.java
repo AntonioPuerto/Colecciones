@@ -56,6 +56,9 @@ public class Pelicula implements Comparable<Pelicula>{
 	public LocalDate getFechaDVD() {
 		return fechaDVD;
 	}
+	public Clave getClave() {
+		return clave;
+	}
 	@Override
 	public int compareTo(Pelicula o) {
 		int comparacion=(int) ChronoUnit.DAYS.between(fechaDVD, o.fechaDVD);
