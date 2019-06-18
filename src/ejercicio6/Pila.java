@@ -14,6 +14,7 @@ public class Pila {
 	}
 	public void menu() {
 		int seleccion;
+		boolean salir=false;
 		do {
 			System.out.print("1.Nueva pila\n2.Consultar elemento\n3.Añadir elemento\n4.Eliminar elemento.\n5.Consultar toda la pila\n6.Salir\nIntroduce: ");
 			seleccion = range(Range.BOTHIN, 6, 1);
@@ -35,10 +36,10 @@ public class Pila {
 				mostrarPila();
 				break;
 			case 6:
-				System.exit(0);
+				salir=true;
 				break;
 			}
-		} while (seleccion!=6);
+		} while (!salir);
 	}
 	private void mostrarPila() {
 		if (!pila.isEmpty()) {

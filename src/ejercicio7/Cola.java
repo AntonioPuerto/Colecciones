@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import ejercicio3.Keyboard;
 import ejercicio3.Keyboard.Range;
-import ejercicio6.Pila;
+
 
 public class Cola {
 	private LinkedList<String> cola;
@@ -15,6 +15,7 @@ public class Cola {
 	}
 	public void menu() {
 		int seleccion;
+		boolean salir=false;
 		do {
 			System.out.print("1.Nueva pila\n2.Consultar elemento\n3.Añadir elemento\n4.Eliminar elemento.\n5.Consultar toda la pila\n6.Salir\nIntroduce: ");
 			seleccion = range(Range.BOTHIN, 6, 1);
@@ -36,10 +37,10 @@ public class Cola {
 				mostrarPila();
 				break;
 			case 6:
-				System.exit(0);
+				salir=true;
 				break;
 			}
-		} while (seleccion!=6);
+		} while (!salir);
 	}
 	private void mostrarPila() {
 		for(String s: cola) {

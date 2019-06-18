@@ -11,6 +11,7 @@ public class Menu {
 
 	public void menu() {
 		int option;
+		boolean salir=false;
 		do {
 			System.out.printf(
 					"\n1.Nueva lista\n2.Número de cadenas\n3.Añadir cadena\n4.Eliminar cadena\n5.Contiene cadena\n6.Mostrar lista entera\n7.Salir\nIntroduce: ");
@@ -28,10 +29,10 @@ public class Menu {
 				break;
 			case 6: mostrarLista();
 				break;
-			case 7: System.exit(0);
+			case 7: salir=true;
 				break;
 			}
-		} while (option!=7);
+		} while (!salir);
 	}
 
 	private void contiene() {

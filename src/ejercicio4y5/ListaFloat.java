@@ -16,6 +16,7 @@ public class ListaFloat {
 	}
 	public void menu() {
 		int seleccion;
+		boolean salir=false;
 		do {
 			System.out.print("1.Mostrar lista\n2.Mostrar siguiente\n3.Mostrar anterior\n4.Eliminar último mostrado.\n5.Salir\nIntroduce: ");
 			seleccion = range(Range.BOTHIN, 5, 1);
@@ -34,10 +35,10 @@ public class ListaFloat {
 				eliminar();
 				break;
 			case 5:
-				System.exit(0);
+				salir=true;
 				break;
 			}
-		} while (seleccion!=5);
+		} while (!salir);
 	}
 	private void mostrarLista() {
 		if (!lista.isEmpty()) {
